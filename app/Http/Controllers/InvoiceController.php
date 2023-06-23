@@ -15,10 +15,21 @@ class InvoiceController extends Controller
 
     }
 
-    public function findInvoice() {
-        
+    public function findInvoice(Request $request) {
+        $request->validate([
+            'invoice_ref' => 'required'
+        ]);
+         $invoice = Invoice::where('invoice_ref', $request->invoice_ref)->first();
+        if($invoice){
+            return redirect()->route('invoice', compact('dashboard'));
+        }else{
+            return redirect()->back()->with('error', 'Sorry!, Invoice does not exits.');
+        } 
     }
 
+    public function payInvoice(Request $request) {
+
+    }
     
     public function checkInvoice($student_id) {
         $invoices = Invoice::where('student_id', $student_id)->get();
@@ -29,7 +40,5 @@ class InvoiceController extends Controller
         }
     }
 
-    public function payInvoice() {
-
-    }
+    
 }
