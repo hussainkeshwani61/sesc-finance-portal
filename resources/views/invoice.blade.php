@@ -15,7 +15,7 @@
             <div class="form-group">
               <input type="text" class="form-control" name="ref_number" placeholder="Enter Refrence number">
             </div>
-            {{-- <button type="submit" class="btn btn-primary">Find</button> --}}
+            <button type="submit" class="btn btn-primary">Find</button>
           </form>
     </div>
 </div> 
